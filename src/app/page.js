@@ -86,12 +86,14 @@ function HomeComponent() {
                             {readMore ? 'Read less' : 'Read more'}
                         </span>
 
-                        <Button
-                            className={"pr-3 pl-4 py-0 max-w-64 text-white text-md bg-orange-400 hover:bg-orange-500 button-hover"}
-                            variant={""}>
-                            <span className={`text-md font-normal py-0 text-hover`}>Reading re-imagined</span>
-                            <ChevronRightIcon className={`ml-2`} height={18} width={18}/>
-                        </Button>
+                        <Link href={"https://rewrite-v2.vercel.app/"}>
+                            <Button
+                                className={"pr-3 pl-4 py-0 max-w-64 text-white text-md bg-orange-400 hover:bg-orange-500 button-hover"}
+                                variant={""}>
+                                <span className={`text-md font-normal py-0 text-hover`}>Reading re-imagined</span>
+                                <ChevronRightIcon className={`ml-2`} height={18} width={18}/>
+                            </Button>
+                        </Link>
                     </div>
 
                         <div className={"w-full h-[0.5px] bg-neutral-400 mt-1 mb-8 rounded"}/>
