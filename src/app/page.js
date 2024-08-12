@@ -60,24 +60,37 @@ export default function Home() {
                         <h3 className={`text-lg mb-4 text-neutral-400 font-light`}>
                             Software Engineer
                         </h3>
-                        <p className={`text-md mb-2`}>
+                        <p className={`text-md mb-2 font-medium`}>
                             Pursuing competence, engineering backends, and re-thinking reading interfaces. {' '}
                         </p>
                         {readMore && (
-                            <p className={`text-md mb-2`}>
-                                I studied sound engineering in Berlin, Germany before pivoting to software.
+                            <p className={`text-md mt-2 mb-4 md:w-6/12 leading-6`}>
+                                I studied sound engineering in Berlin, Germany before I pivoted to software.
+                                I composed music for short films and engineered music for various clients at our
+                                recording studio in Berlin. Also dabbled in some creativity coaching :)
+                                <br/>
+                                <br/>
+                                {/* eslint-disable-next-line react/no-unescaped-entities */}
+                                I've since pivoted to software after a failed business and a coding bootcamp taught me
+                                how to code. I'm now a passionate developer with a love of building applications.
+                                Currently, I'm rethinking how we read on the web, freelancing, and cultivating my skills
+                                as an engineer.
+                                <br/>
+                                <br/>
+                                If anything here sounds interesting, feel free to reach me at
+                                marcelo[at]appcabinet[dot]com.
                             </p>
                         )}
                         <span
                             onClick={() => setReadMore(!readMore)}
-                            className={`text-md mb-4 text-neutral-400 hover:text-orange-400 hover:cursor-pointer`}>
+                            className={`text-md mb-4 font-light text-neutral-400 hover:text-orange-400 hover:cursor-pointer`}>
                             {readMore ? 'Read less' : 'Read more'}
                         </span>
 
                         <Button
                             className={"pr-3 pl-4 py-0 max-w-64 text-white text-md bg-orange-400 hover:bg-orange-500 button-hover"}
                             variant={""}>
-                            <span className={`text-md font-light py-0 text-hover`}>Read latest</span>
+                            <span className={`text-md font-normal py-0 text-hover`}>Reading re-imagined</span>
                             <ChevronRightIcon className={`ml-2`} height={18} width={18}/>
                         </Button>
                     </div>
@@ -232,7 +245,7 @@ export default function Home() {
                     </ul>
 
                     <p className={"md:text-lg"}>
-                        You can receive my updates here. We'd love to have you on board.
+                        You can receive my updates here. I'd love to have you on board!
                     </p>
 
                     <EmailSignUp/>
