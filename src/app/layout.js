@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
   return (
       <html lang="en">
       <Head>
-          <link rel={"icon"} href={"/marcelo-app-icon.jpeg"}/>
+          <link rel="icon" href={"/de3-icon.png"}/>
       </Head>
       <body className={dmSans.className}>{children}
       <Toaster/>

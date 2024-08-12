@@ -83,7 +83,7 @@ function HomeComponent() {
                         <span
                             onClick={() => setReadMore(!readMore)}
                             className={`text-md mb-4 font-light text-neutral-400 hover:text-orange-400 hover:cursor-pointer`}>
-                            {readMore ? 'Read less' : 'Read more'}
+                            {readMore ? 'Show less' : 'Read more'}
                         </span>
 
                         <Link href={"https://rewrite-v2.vercel.app/"}>
