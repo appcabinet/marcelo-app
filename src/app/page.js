@@ -215,7 +215,7 @@ function HomeComponent() {
                                     </p>
                                     <div className={"w-full h-[0.5px] bg-neutral-400 mt-4 md:mt-6 rounded"}/>
                                 </div>
-                                <div className={"min-w-8 min-h-8"}>
+                                <div className={"min-w-8 min-h-8 md:ml-4"}>
                                     <ChevronRightIcon className={"mt-2"} height={28} width={28}/>
                                 </div>
                             </Link>
@@ -230,7 +230,7 @@ function HomeComponent() {
                         </h1>
                         <p className={"mb-4 text-md md:text-lg"}>
                             Thanks for visiting! You can check my socials below, or go back to the
-                            top <Link href={"/?scrollTo=home"} className={"text-orange-400 underline"}>here</Link>.
+                            top <Link href={"/?scrollTo=home"} className={"text-orange-400 "}>here</Link>.
                         </p>
 
                         <ul className={"mb-4"}>
