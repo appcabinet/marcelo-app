@@ -176,7 +176,7 @@ function HomeComponent() {
 
                         {work.map(w => (
                             <>
-                                <div key={w.role} className={"mb-6"}>
+                                <div key={w.role} className={"mb-5"}>
                                     <h4 className={"text-lg font-medium text-neutral-800 mb-0"}>
                                         {w.role}
                                     </h4>
@@ -187,7 +187,7 @@ function HomeComponent() {
                                         {w.description}
                                     </p>
                                 </div>
-                                <div className={"w-full h-[0.5px] bg-neutral-400 mt-0 mb-6 rounded"}/>
+                                <div className={"w-full h-[0.5px] bg-neutral-400 mt-0 mb-4 rounded"}/>
                             </>
                         ))}
                     </div>

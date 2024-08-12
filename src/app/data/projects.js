@@ -2,7 +2,7 @@ export const projects = [
     {
         title: "Re-thinking Reading Interfaces",
         description: "Crafting digital reading experiences from scratch. Version 4 out now!",
-        url: "/w/god-and-capitalism"
+        url: "https://rewrite-v2.vercel.app/"
     },
     {
         title: "PLOX Interpreter",
@@ -17,7 +17,7 @@ export const projects = [
     {
         title: "Notion Workflows",
         description: "Wrote custom Notion workflows for Software Engineers. Made $56.",
-        url: "https://www.notion.so/mindofmarcelo/Marcelo-Mantilla-7f5c1c7838f543c7889ad8303b9a2a22?pvs=4",
+        url: "https://mindofmarcelo.gumroad.com/",
     },
     {
         title: "Sound Engineering",
