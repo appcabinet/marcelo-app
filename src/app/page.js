@@ -7,7 +7,7 @@ import EmailSignUp from "@/components/actions/EmailSignUp";
 
 import { DM_Serif_Text } from "next/font/google";
 import { Button } from "@/components/ui/button";
-import { Dot, Ellipsis } from "lucide-react";
+import { Dot, Ellipsis, Loader2 } from "lucide-react";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 
 import { articles } from "@/app/data/articles";
@@ -19,7 +19,7 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 const titleFont = DM_Serif_Text({ subsets: ["latin"], weight: ['400'] });
 
-export default function Home() {
+function HomeComponent() {
     const router = useRouter();
     const firstArticle = articles[0];
     let allArticles = articles.slice(1);
@@ -41,60 +41,58 @@ export default function Home() {
         const hasVisited = localStorage.getItem('hasVisited');
         if (!hasVisited) {
             localStorage.setItem('hasVisited', 'true');
-            router.push('/?scrollTo=home');
+            router.push('/');
         }
     }, [router]);
 
     return (
-        <Suspense>
-
-            <div className="w-screen h-screen snap-y snap-mandatory overflow-y-scroll">
-                <section
-                    id="home"
-                    className={"w-full h-full flex justify-center snap-always snap-start"}
-                >
-                    <div
-                        className={"w-11/12 px-2 h-full text-neutral-600 flex flex-col justify-center items-start"}>
-                        <div className={"mb-6 flex flex-col"}>
-                            <h1 className={`text-[40px] md:text-5xl leading-10 mb-1 font-medium ${titleFont.className}`}>
-                                Marcelo Mantilla
-                            </h1>
-                            <h3 className={`text-lg mb-4 text-neutral-400 font-light`}>
-                                Software Engineer
-                            </h3>
-                            <p className={`text-md mb-2 font-medium`}>
-                                Pursuing competence, engineering backends, and re-thinking reading interfaces. {' '}
+        <div className="w-screen h-screen snap-y snap-mandatory overflow-y-scroll">
+            <section
+                id="home"
+                className={"w-full h-full flex justify-center snap-always snap-start"}
+            >
+                <div
+                    className={"w-11/12 px-2 h-full text-neutral-600 flex flex-col justify-center items-start"}>
+                    <div className={"mb-6 flex flex-col"}>
+                        <h1 className={`text-[40px] md:text-5xl leading-10 mb-1 font-medium ${titleFont.className}`}>
+                            Marcelo Mantilla
+                        </h1>
+                        <h3 className={`text-lg mb-4 text-neutral-400 font-light`}>
+                            Software Engineer
+                        </h3>
+                        <p className={`text-md mb-2 font-medium`}>
+                            Pursuing competence, engineering backends, and re-thinking reading interfaces. {' '}
+                        </p>
+                        {readMore && (
+                            <p className={`text-md mt-2 mb-4 md:w-6/12 leading-6`}>
+                                I studied sound engineering in Berlin, Germany before pivoting to software.
+                                I composed music for short films and engineered music for various clients at our
+                                recording studio in Berlin. Also dabbled in some creativity coaching :)
+                                <br/>
+                                <br/>
+                                I've since pivoted to software after a failed business and a coding bootcamp taught me
+                                how to code. I'm now a passionate developer with a love of building applications.
+                                Currently, I'm rethinking how we read on the web, freelancing, and cultivating my skills
+                                as an engineer.
+                                <br/>
+                                <br/>
+                                If anything here sounds interesting, feel free to reach me at
+                                marcelo[at]appcabinet[dot]com.
                             </p>
-                            {readMore && (
-                                <p className={`text-md mt-2 mb-4 md:w-6/12 leading-6`}>
-                                    I studied sound engineering in Berlin, Germany before I pivoted to software.
-                                    I composed music for short films and engineered music for various clients at our
-                                    recording studio in Berlin. Also dabbled in some creativity coaching :)
-                                    <br/>
-                                    <br/>
-                                    I've since pivoted to software after a failed business and a coding bootcamp taught me
-                                    how to code. I'm now a passionate developer with a love of building applications.
-                                    Currently, I'm rethinking how we read on the web, freelancing, and cultivating my skills
-                                    as an engineer.
-                                    <br/>
-                                    <br/>
-                                    If anything here sounds interesting, feel free to reach me at
-                                    marcelo[at]appcabinet[dot]com.
-                                </p>
-                            )}
-                            <span
-                                onClick={() => setReadMore(!readMore)}
-                                className={`text-md mb-4 font-light text-neutral-400 hover:text-orange-400 hover:cursor-pointer`}>
+                        )}
+                        <span
+                            onClick={() => setReadMore(!readMore)}
+                            className={`text-md mb-4 font-light text-neutral-400 hover:text-orange-400 hover:cursor-pointer`}>
                             {readMore ? 'Read less' : 'Read more'}
                         </span>
 
-                            <Button
-                                className={"pr-3 pl-4 py-0 max-w-64 text-white text-md bg-orange-400 hover:bg-orange-500 button-hover"}
-                                variant={""}>
-                                <span className={`text-md font-normal py-0 text-hover`}>Reading re-imagined</span>
-                                <ChevronRightIcon className={`ml-2`} height={18} width={18}/>
-                            </Button>
-                        </div>
+                        <Button
+                            className={"pr-3 pl-4 py-0 max-w-64 text-white text-md bg-orange-400 hover:bg-orange-500 button-hover"}
+                            variant={""}>
+                            <span className={`text-md font-normal py-0 text-hover`}>Reading re-imagined</span>
+                            <ChevronRightIcon className={`ml-2`} height={18} width={18}/>
+                        </Button>
+                    </div>
 
                         <div className={"w-full h-[0.5px] bg-neutral-400 mt-1 mb-8 rounded"}/>
 
@@ -252,8 +250,18 @@ export default function Home() {
                         <EmailSignUp/>
                     </div>
                 </section>
+        </div>
+    );
+}
 
+export default function Home() {
+    return (
+        <Suspense fallback={
+            <div className={"w-full h-full flex justify-center items-center"}>
+                <Loader2/>
             </div>
+        }>
+            <HomeComponent/>
         </Suspense>
     );
 }
