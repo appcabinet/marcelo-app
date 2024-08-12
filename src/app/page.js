@@ -52,7 +52,7 @@ function HomeComponent() {
                 className={"w-full h-full flex justify-center snap-always snap-start"}
             >
                 <div
-                    className={"w-11/12 px-2 h-full text-neutral-600 flex flex-col justify-center items-start"}>
+                    className={"w-11/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
                     <div className={"mb-6 flex flex-col"}>
                         <h1 className={`text-[40px] md:text-5xl leading-10 mb-1 font-medium ${titleFont.className}`}>
                             Marcelo Mantilla
@@ -67,17 +67,13 @@ function HomeComponent() {
                             <p className={`text-md mt-2 mb-4 md:w-6/12 leading-6`}>
                                 I studied sound engineering in Berlin, Germany before pivoting to software.
                                 I composed music for short films and engineered music for various clients at our
-                                recording studio in Berlin. Also dabbled in some creativity coaching :)
+                                recording studio in Berlin.
                                 <br/>
                                 <br/>
                                 I've since pivoted to software after a failed business and a coding bootcamp taught me
                                 how to code. I'm now a passionate developer with a love of building applications.
                                 Currently, I'm rethinking how we read on the web, freelancing, and cultivating my skills
                                 as an engineer.
-                                <br/>
-                                <br/>
-                                If anything here sounds interesting, feel free to reach me at
-                                marcelo[at]appcabinet[dot]com.
                             </p>
                         )}
                         <span
@@ -90,7 +86,7 @@ function HomeComponent() {
                             <Button
                                 className={"pr-3 pl-4 py-0 max-w-64 text-white text-md bg-orange-400 hover:bg-orange-500 button-hover"}
                                 variant={""}>
-                                <span className={`text-md font-normal py-0 text-hover`}>Reading re-imagined</span>
+                                <span className={`text-md font-normal py-0 text-hover`}>Rethinking reading</span>
                                 <ChevronRightIcon className={`ml-2`} height={18} width={18}/>
                             </Button>
                         </Link>
@@ -124,7 +120,7 @@ function HomeComponent() {
                 </section>
 
                 <section id="writing" className={"w-full h-full flex justify-center snap-always snap-start"}>
-                    <div className={"w-11/12 px-2 h-full text-neutral-600 flex flex-col justify-center items-start"}>
+                    <div className={"w-11/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
                         <h1 className={`text-[40px] md:text-5xl leading-10 -ml-1 mb-5 font-medium ${titleFont.className}`}>
                             Writing
                         </h1>
@@ -166,7 +162,7 @@ function HomeComponent() {
                 </section>
 
                 <section id="work" className={"w-full h-full flex justify-center snap-always snap-start"}>
-                    <div className={"w-11/12 px-2 h-full text-neutral-600 flex flex-col justify-center items-start"}>
+                    <div className={"w-11/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
                         <h1 className={`text-[40px] md:text-5xl leading-10 -ml-1 mb-4 font-medium ${titleFont.className}`}>
                             Work
                         </h1>
@@ -198,14 +194,14 @@ function HomeComponent() {
                 </section>
 
                 <section id="projects" className={"w-full h-full flex justify-center snap-always snap-start"}>
-                    <div className={"w-11/12 px-2 h-full text-neutral-600 flex flex-col justify-center items-start"}>
+                    <div className={"w-11/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
                         <h1 className={`text-[40px] md:text-5xl leading-10 mb-10 font-medium ${titleFont.className}`}>
                             Projects
                         </h1>
 
                         {projects.map(p => (
                             <Link key={p.title} href={p.url}
-                                  className={"w-full flex justify-between content-center items-center mb-4 md:mb-5"}>
+                                  className={"w-full flex justify-between content-center items-center mb-3 md:mb-5"}>
                                 <div className={"w-full"}>
                                     <h4 className={"text-md md:text-lg font-medium text-neutral-800 mb-1"}>
                                         {p.title}
@@ -213,18 +209,19 @@ function HomeComponent() {
                                     <p>
                                         {p.description}
                                     </p>
-                                    <div className={"w-full h-[0.5px] bg-neutral-400 mt-4 md:mt-6 rounded"}/>
+                                    <div className={"w-full h-[0.5px] bg-neutral-400 mt-3 md:mt-6 rounded"}/>
                                 </div>
                                 <div className={"min-w-8 min-h-8 md:ml-4"}>
-                                    <ChevronRightIcon className={"mt-2"} height={28} width={28}/>
+                                    <ChevronRightIcon className={""} height={28} width={28}/>
                                 </div>
                             </Link>
                         ))}
+                        <br/>
                     </div>
                 </section>
 
                 <section id="contact" className={"w-full h-full flex justify-center snap-always snap-start"}>
-                    <div className={"w-11/12 px-5 h-full text-neutral-600 flex flex-col justify-center items-start"}>
+                    <div className={"w-11/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
                         <h1 className={`text-[40px] md:text-5xl leading-10 -ml-1 mb-4 font-medium ${titleFont.className}`}>
                             Contact
                         </h1>
@@ -246,7 +243,7 @@ function HomeComponent() {
                         </ul>
 
                         <p className={"md:text-lg"}>
-                            You can receive my updates here. I'd love to have you on board!
+                            Sign up for my newsletter to get updates on my latest projects & articles.
                         </p>
 
                         <EmailSignUp/>
