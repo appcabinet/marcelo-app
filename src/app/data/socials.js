@@ -12,7 +12,7 @@ export const socials = [
         url: "https://www.x.com/marcelodotapp",
     },
     {
-        title: "Soundcloud",
+        title: "soundcloud",
         url: "https://soundcloud.com/pondermars",
     }
 ];
