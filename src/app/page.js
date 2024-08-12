@@ -25,44 +25,39 @@ export default function Home() {
 
     const router = useRouter();
     const pathname = usePathname();
-    const sectionRefs = useRef([]);
-
-    const sections = [
-        { id: 'home-0', url: '/' },
-        { id: 'home-1', url: '/writing' },
-        { id: 'home-2', url: '/work' },
-        { id: 'home-3', url: '/projects' },
-        { id: 'home-4', url: '/thanks' },
-    ];
+    const scrollContainerRef = useRef(null);
 
     useEffect(() => {
-        const handleScroll = () => {
-            const sections = document.querySelector('section');
-            let currentSectionId = '';
+        const scrollContainer = scrollContainerRef.current;
+        if (!scrollContainer) return;
 
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.scrollY >= sectionTop - 50) {
-                    currentSectionId = section.getAttribute('id');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const newId = entry.target.id;
+                    if (pathname !== `${newId}`) {
+                        router.push(`${newId}`, { scroll: false });
+                    }
                 }
             });
-            if (currentSectionId && pathname !== `#${currentSectionId}`) {
-                router.replace(`#${currentSectionId}`);
-            }
-            window.addEventListener('scroll', handleScroll);
-            return () => {
-                window.removeEventListener('scroll', handleScroll);
-            };
-        };
+        }, {
+            root: scrollContainer,
+            threshold: 0.5 // Trigger when 50% of the section is visible
+        });
+
+        const sections = scrollContainer.querySelectorAll('section');
+        sections.forEach(section => observer.observe(section));
+
+        return () => sections.forEach(section => observer.unobserve(section));
+
 
     }, [router, pathname]);
 
     return (
-        <div className="w-screen h-screen snap-y snap-mandatory overflow-y-scroll">
+        <div className="w-screen h-screen snap-y snap-mandatory overflow-y-scroll" ref={scrollContainerRef}>
             <section
-                id="home-0"
+                id="home"
                 className={"w-full h-full flex justify-center snap-always snap-start"}
-                ref={(el) => (sectionRefs.current[0] = el)}
             >
                 <div
                     className={"w-11/12 px-2 h-full text-neutral-600 flex flex-col justify-center items-start"}>
@@ -109,7 +104,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="home-1" className={"w-full h-full flex justify-center snap-always snap-start"}>
+            <section id="writing" className={"w-full h-full flex justify-center snap-always snap-start"}>
                 <div className={"w-11/12 px-2 h-full text-neutral-600 flex flex-col justify-center items-start"}>
                     <h1 className={`text-[40px] md:text-5xl leading-10 -ml-1 mb-5 font-medium ${titleFont.className}`}>
                         Writing
@@ -151,7 +146,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="home-2" className={"w-full h-full flex justify-center snap-always snap-start"}>
+            <section id="work" className={"w-full h-full flex justify-center snap-always snap-start"}>
                 <div className={"w-11/12 px-2 h-full text-neutral-600 flex flex-col justify-center items-start"}>
                     <h1 className={`text-[40px] md:text-5xl leading-10 -ml-1 mb-4 font-medium ${titleFont.className}`}>
                         Work
@@ -183,7 +178,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="home-3" className={"w-full h-full flex justify-center snap-always snap-start"}>
+            <section id="projects" className={"w-full h-full flex justify-center snap-always snap-start"}>
                 <div className={"w-11/12 px-2 h-full text-neutral-600 flex flex-col justify-center items-start"}>
                     <h1 className={`text-[40px] md:text-5xl leading-10 mb-10 font-medium ${titleFont.className}`}>
                         Projects
@@ -209,7 +204,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="home-3" className={"w-full h-full flex justify-center snap-always snap-start"}>
+            <section id="contact" className={"w-full h-full flex justify-center snap-always snap-start"}>
                 <div className={"w-11/12 px-5 h-full text-neutral-600 flex flex-col justify-center items-start"}>
                     <h1 className={`text-[40px] md:text-5xl leading-10 -ml-1 mb-4 font-medium ${titleFont.className}`}>
                         That's it.
