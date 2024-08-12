@@ -157,7 +157,7 @@ export default function Home() {
                         Work
                     </h1>
 
-                    <p className={"mb-4"}>
+                    <p className={"mb-4 text-neutral-400 font-light"}>
                         You can find my full CV {``}
                         <a href={"https://www.notion.so/mindofmarcelo/Marcelo-Mantilla-7f5c1c7838f543c7889ad8303b9a2a22?pvs=4"}
                            className={"underline"}>here.
@@ -214,8 +214,8 @@ export default function Home() {
                     <h1 className={`text-[40px] md:text-5xl leading-10 -ml-1 mb-4 font-medium ${titleFont.className}`}>
                         Contact
                     </h1>
-                    <p className={"mb-4"}>
-                        Thanks for visiting! You can check my socials below. Or you can go back to the
+                    <p className={"mb-4 text-md md:text-lg"}>
+                        Thanks for visiting! You can check my socials below, or go back to the
                         top <Link href={"/?scrollTo=home"} className={"text-orange-400 underline"}>here</Link>.
                     </p>
 
@@ -224,15 +224,15 @@ export default function Home() {
                             <li key={keygen()} className={"text-neutral-500 mb-1 flex justify-start"}>
                                 <Dot/>
                                 <Link href={s.url}
-                                      className={"underline underline-offset-2 hover:text-orange-500 font-light"}>
+                                      className={"underline underline-offset-2 hover:text-orange-500 font-light md:text-lg"}>
                                     {s.title}
                                 </Link>
                             </li>
                         ))}
                     </ul>
 
-                    <p className={""}>
-                        Join my newsletter for exclusive updates on my latest articles and projects!
+                    <p className={"md:text-lg"}>
+                        You can receive my updates here. We'd love to have you on board.
                     </p>
 
                     <EmailSignUp/>

@@ -1,15 +1,18 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 import { Input } from "@/components/ui/input.jsx";
 import { Button } from "@/components/ui/button.jsx";
 import { useToast } from "@/components/ui/use-toast";
+import { Loader } from "lucide-react";
 
 const EmailSignUp = () => {
     const form = useRef();
     const { toast } = useToast();
+    const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -20,10 +23,19 @@ const EmailSignUp = () => {
             })
             .then(
                 () => {
-                    console.log('Success');
+                    setEmail('');
+                    setLoading(false);
+                    toast({
+                        description: 'Email successfully submitted.',
+                        duration: 5000,
+                    });
                 },
                 (error) => {
-                    console.log('Failed');
+                    setLoading(false);
+                    toast({
+                        description: "Couldn't submit email.",
+                        duration: 5000,
+                    });
                 },
             );
     };
@@ -31,19 +43,20 @@ const EmailSignUp = () => {
     return (
         <div className={"mt-8 w-full flex justify-start items-center content-center"}>
             <form ref={form} onSubmit={sendEmail} className={"flex w-96"}>
-                <Input type={"email"} name={"user_email"} placeholder={"Email"} className={"mr-2"}/>
+                <Input
+                    type={"email"}
+                    name={"user_email"}
+                    placeholder={"Email"}
+                    className={"mr-2"}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
                 <Button
                     className=""
                     type="submit"
-                    onClick={() => {
-                        toast({
-                            title: 'Success',
-                            description: 'You have lucked out.',
-                            variant: "success"
-                        });
-                    }}
+                    onClick={() => setLoading(true)}
                 >
-                    👍
+                    {loading ? <Loader size={20} className="animate-spin"/> : <>👍</>}
                 </Button>
             </form>
         </div>
