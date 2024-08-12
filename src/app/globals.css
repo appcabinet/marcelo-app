@@ -17,12 +17,32 @@
 }
 
 body {
-    color: rgb(var(--foreground-rgb));
-    background: white;
+  color: rgb(var(--foreground-rgb));
+  background: #f8f6f4;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.fade-stripe-y {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 165, 0, 0) 0%, rgba(255, 165, 0, 1) 25%, rgba(255, 165, 0, 1) 100%);
+}
+
+.fade-stripe-x {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 165, 0, 0) 0%, rgba(255, 165, 0, 1) 100%, rgba(255, 165, 0, 0) 0%);
+}
+
+.text-hover {
+  transition: margin-left 0.1s ease-in-out;
+}
+
+.button-hover:hover .text-hover {
+  margin-left: 5px; /* Adjust the value as needed */
 }
