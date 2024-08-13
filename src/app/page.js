@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import Link from "next/link";
 import { keygen } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
@@ -176,22 +177,26 @@ function HomeComponent() {
                             </a>
                         </p>
 
-                        {work.map(w => (
-                            <>
-                                <div key={w.role} className={"mb-5"}>
-                                    <h4 className={"text-lg font-medium text-neutral-800 mb-0"}>
-                                        {w.role}
-                                    </h4>
-                                    <p className={"mb-2 text-neutral-500"}>
-                                        {w.company} · {w.from}
-                                    </p>
-                                    <p>
-                                        {w.description}
-                                    </p>
-                                </div>
-                                <div className={"w-full h-[0.5px] bg-neutral-400 mt-0 mb-4 rounded"}/>
-                            </>
-                        ))}
+                        {work.map((w, index) => {
+                            let hidden = index > 2 ? 'hidden' : '';
+                            return (
+                                <React.Fragment key={w.role}>
+                                    <div className={`mb-5 ${hidden} sm:block`}>
+                                        <h4 className={"text-lg font-medium text-neutral-800 mb-0"}>
+                                            {w.role}
+                                        </h4>
+                                        <p className={"mb-2 text-neutral-500"}>
+                                            {w.company} · {w.from}
+                                        </p>
+                                        <p>
+                                            {w.description}
+                                        </p>
+                                    </div>
+                                    <div
+                                        className={`w-full h-[0.5px] bg-neutral-400 mt-0 mb-4 rounded ${hidden} sm:block`}/>
+                                </React.Fragment>
+                            );
+                        })}
                     </div>
                 </section>
 
