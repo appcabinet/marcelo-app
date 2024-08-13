@@ -1,7 +1,7 @@
 export const articles = [
     {
         id: 0,
-        url_header: "god-and-capitalism",
+        url: "https://substack.com/home/post/p-143727641?source=queue",
         created_at: "June 28, 2024",
         updated_at: "June 30, 2024",
         title: "God, Capitalism, & the Paradox of Self-Help",
@@ -86,6 +86,7 @@ export const articles = [
         updated_at: "August 11, 2024",
         title: "Cracked Engineering",
         read_time: "4 min",
+        url: "https://substack.com/home/post/p-146694264?source=queue",
         summary: "",
         subtitle: "",
     },

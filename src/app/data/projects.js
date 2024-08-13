@@ -1,7 +1,7 @@
 export const projects = [
     {
         title: "Re-thinking Reading Interfaces",
-        description: "Crafting digital reading experiences from scratch. Version 4 out now!",
+        description: "Crafting digital reading experiences from scratch. Version 4 out now 📕",
         url: "https://rewrite-v2.vercel.app/"
     },
     {
@@ -21,7 +21,7 @@ export const projects = [
     },
     {
         title: "Sound Engineering",
-        description: "Film scores, sound design, and creative music production.",
+        description: "Film scoring, sound design, and creative music production.",
         url: "https://soundcloud.com/pondermars"
     }
 ];

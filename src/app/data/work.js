@@ -9,12 +9,12 @@ export const work = [
         role: "Backend Software Engineer",
         company: "Shyftlabs",
         from: "Mar 2023 - May 2024",
-        description: "Building enterprise AWS backends. Lead architecture discussions, assigned as lead developer for critical GraphQL initiative."
+        description_v2: "Jumped around from team to team. Contributed to enterprise pricing engines, microservices, and Shopify integrations. Was assigned lead developer for GraphQL initiative."
     },
     {
         role: "Software Engineer",
         company: "Bolt Logistics",
         from: "Jan 2023 - Mar 2023",
-        description: "Full stack logistics development in RoR, React. Async jobs, architecting systems, and DB optimizations.",
+        description: "Full stack logistics development in Ruby on Rails and React. Async jobs, architecting systems, and DB optimizations.",
     }
 ];

@@ -127,7 +127,7 @@ function HomeComponent() {
 
                         <h3 className={"text-lg mb-3 text-neutral-400 font-light"}>Latest</h3>
 
-                        <Link href={`/w/${firstArticle.url_header}`}
+                        <Link href={firstArticle.url}
                               className={"w-full flex flex-col items-start mb-5 rounded-lg"}>
                             <h4 className={"text-lg font-medium text-neutral-800 leading-6 mb-1"}>
                                 {firstArticle.title}
