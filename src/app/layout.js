@@ -9,15 +9,15 @@ const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata = {
     title: "marcelo.app",
-    description: "Marcelo's personal website.",
+    description: "Software engineering and related domains",
+    icons: {
+        icon: '/de3-icon.png',
+    }
 };
 
 export default function RootLayout({ children }) {
   return (
       <html lang="en">
-      <Head>
-          <link rel="icon" href={"/de3-icon.png"}/>
-      </Head>
       <body className={dmSans.className}>{children}
       <Toaster/>
       </body>
