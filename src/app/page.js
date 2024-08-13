@@ -33,6 +33,8 @@ function HomeComponent() {
             const section = document.getElementById(scrollTo);
             if (section) {
                 section.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
             }
         }
     }, [searchParams]);
@@ -227,7 +229,13 @@ function HomeComponent() {
                         </h1>
                         <p className={"mb-4 text-md md:text-lg"}>
                             Thanks for visiting! You can check my socials below, or go back to the
-                            top <Link href={"/?scrollTo=home"} className={"text-orange-400 "}>here</Link>.
+                            top {searchParams.get('scrollTo') === 'home' ?
+                            (
+                                <Link href={"/?scrollTo=root"} className={"text-orange-400 "}>here</Link>
+                            ) : (
+                                <Link href={"/?scrollTo=home"} className={"text-orange-400 "}>here</Link>
+                            )
+                        }.
                         </p>
 
                         <ul className={"mb-4"}>
