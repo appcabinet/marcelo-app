@@ -9,7 +9,7 @@ export const work = [
         role: "Backend Software Engineer",
         company: "Shyftlabs",
         from: "Mar 2023 - May 2024",
-        description_v2: "Jumped around from team to team. Contributed to enterprise pricing engines, microservices, and Shopify integrations. Was assigned lead developer for GraphQL initiative."
+        description: "Jumped around from team to team. Contributed to enterprise pricing engines, microservices, and Shopify integrations. Was assigned lead developer for GraphQL initiative."
     },
     {
         role: "Software Engineer",
