@@ -13,7 +13,6 @@ export default async function ArticlePage({ params }) {
     return (
         <div>
             <h1>{article.title}</h1>
-            BONGONANZA
         </div>
     );
 }
