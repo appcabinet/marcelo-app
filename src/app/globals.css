@@ -21,6 +21,10 @@ body {
   background: #f8f6f4;
 }
 
+article {
+  background: #f8f6f4;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
