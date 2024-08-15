@@ -42,7 +42,7 @@ const EmailSignUp = () => {
 
     return (
         <div className={"mt-8 w-full flex justify-start items-center content-center"}>
-            <form ref={form} onSubmit={sendEmail} className={"flex w-96"}>
+            <form ref={form} onSubmit={sendEmail} className={"flex w-full"}>
                 <Input
                     type={"email"}
                     name={"user_email"}
