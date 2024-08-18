@@ -20,10 +20,23 @@ export async function getAllPosts() {
         const filePath = path.join(postsDirectory, filename);
         const fileContents = fs.readFileSync(filePath, 'utf8');
         const { data: frontmatter } = matter(fileContents);
+
+        const createdDate = parse(frontmatter.created, "yyyy-MM-dd", new Date());
+
         return {
             slug,
+            createdDate,
             ...frontmatter,
         };
+    });
+
+    // Sort posts by date
+    posts.sort((a, b) => {
+        if (a.createdDate < b.createdDate) {
+            return 1;
+        } else {
+            return -1;
+        }
     });
 
     return posts;

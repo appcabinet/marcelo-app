@@ -3,9 +3,6 @@ import React from "react";
 import H3 from "@/components/custom/core/H3";
 
 const LatestPost = ({ frontmatter }) => {
-    // const created = new Date(frontmatter.created).toLocaleDateString();
-    console.log('frontmatter:', frontmatter);
-
     return (
         <>
             <H3 className={"mb-4"}>Latest</H3>

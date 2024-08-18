@@ -5,7 +5,7 @@
 export default function AppSection({ children }) {
     return (
         <section
-            className={"w-screen h-screen overflow-y-auto scroll-smooth flex justify-center mb-12"}>
+            className={"w-screen h-screen overflow-y-auto scroll-smooth flex justify-center mb-36 lg:mb-2"}>
             <div className={"w-11/12 md:w-[650px] mb-12"}>
                 {children}
             </div>
