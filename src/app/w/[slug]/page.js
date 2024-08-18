@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 import Link from "next/link";
-import { getPost } from "@/lib/mdxUtils";
+import { getPost, postsDirectory } from "@/lib/mdxUtils";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { DM_Sans, DM_Serif_Text } from "next/font/google";
 
@@ -13,9 +13,7 @@ import AppSection from "@/components/custom/core/AppSection";
 const dmSerif = DM_Serif_Text({ subsets: ["latin"], weight: ["400"] });
 
 export async function generateStaticParams() {
-    const postsDirectory = path.join(process.cwd(), 'src/app/data/posts/');
     const files = fs.readdirSync(postsDirectory);
-
     return files.map((file) => {
         const slug = file.replace(/\.mdx$/, '');
         return {

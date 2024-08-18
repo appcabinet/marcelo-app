@@ -23,8 +23,7 @@ export default async function Page() {
     return (
         <AppSection>
             <nav className={"h-24 flex justify-between items-center content-center mb-4"}>
-                <Link href={"/"} className={"flex justify-start items-center group hover:text-orange-400"}>
-                    {/*<MarceloAppIcon className={"ml-4"}/>*/}
+                <Link href={"/writing"} className={"flex justify-start items-center group hover:text-orange-400"}>
                 </Link>
                 <Link href={"/"} className={"flex justify-start items-center group hover:text-orange-400"}>
                     <span

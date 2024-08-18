@@ -9,33 +9,35 @@ import { DM_Serif_Text } from "next/font/google";
 import { Button } from "@/components/ui/button";
 import { Dot, Loader2 } from "lucide-react";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
-import { work } from "@/app/data/home/work";
-import { socials } from "@/app/data/home/socials";
-import { projects } from "@/app/data/home/projects";
+import { work } from "@/data/home/work";
+import { socials } from "@/data/home/socials";
+import { projects } from "@/data/home/projects";
 import { useRouter, useSearchParams } from "next/navigation";
 import H1 from "@/components/custom/core/H1";
 import Divider from "@/components/custom/core/Divider";
 import LatestPost from "@/components/custom/LatestPost";
 import H3 from "@/components/custom/core/H3";
+import PostList from "@/components/custom/PostList";
 
 const titleFont = DM_Serif_Text({ subsets: ["latin"], weight: ['400'] });
 
-async function getPosts() {
-    const response = await fetch('/api/posts');
-    if (!response.ok) {
-        throw new Error('Failed to fetch posts');
-    }
-    return await response.json();
-}
-
-async function HomeComponent() {
-    const router = useRouter();
-    const posts = await getPosts();
-    const latest = posts[0];
-    let allPosts = posts.slice(1);
-
-    const searchParams = useSearchParams();
+function HomeComponent() {
+    const [posts, setPosts] = useState([]);
     const [readMore, setReadMore] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const searchParams = useSearchParams();
+    const router = useRouter();
+
+    useEffect(() => {
+        fetch('/api/posts')
+            .then(res => res.json())
+            .then(data => {
+                    setPosts(data);
+                    setLoading(false);
+                }
+            )
+            .catch(err => console.error(err));
+    }, []);
 
     useEffect(() => {
         const scrollTo = searchParams.get('scrollTo');
@@ -44,7 +46,7 @@ async function HomeComponent() {
             if (section) {
                 section.scrollIntoView({ behavior: 'smooth' });
             } else {
-                document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
             }
         }
     }, [searchParams]);
@@ -57,6 +59,15 @@ async function HomeComponent() {
         }
     }, [router]);
 
+    const latest = posts[0];
+    let allPosts = posts.slice(1);
+
+    if (loading) return (
+        <div className={"w-full h-full flex justify-center items-center"}>
+            <Loader2/>
+        </div>
+    );
+
     return (
         <div className="w-screen h-screen snap-y snap-mandatory overflow-y-scroll">
             <section
@@ -64,9 +75,18 @@ async function HomeComponent() {
                 className={"w-full h-full flex justify-center snap-always snap-start"}
             >
                 <div
-                    className={"w-11/12 lg:w-9/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
-                    {/*<img src={"/de3-icon.png"} alt={"Marcelo Mantilla"} className={"w-64 h-64 rounded-lg mb-4"}/>*/}
-                    <div className={"mb-6 flex flex-col"}>
+                    className={"w-11/12 lg:w-9/12 px-0 h-full text-neutral-600 flex flex-col justify-between items-start"}>
+                    <nav className={"w-full h-24 flex justify-between items-center content-center mb-4"}>
+                        <div/>
+                        <Link href={"/"} className={"flex justify-start items-center group hover:text-orange-400"}>
+                            <span
+                                className={"text-lg text-neutral-600 mt-[0.5px] font-light group-hover:text-orange-400 group-hover:underline"}>
+                                marcelo.app
+                            </span>
+                        </Link>
+                    </nav>
+
+                    <div className={"mb-6 flex flex-col w-full"}>
                         <h1 className={`text-[40px] md:text-5xl leading-10 mb-1 font-medium ${titleFont.className}`}>
                             Marcelo Mantilla
                         </h1>
@@ -93,7 +113,7 @@ async function HomeComponent() {
                         )}
                         <span
                             onClick={() => setReadMore(!readMore)}
-                            className={`text-md font-light text-neutral-400 hover:text-orange-400 hover:cursor-pointer hidden sm:block`}>
+                            className={`mb-2 text-md font-light text-neutral-400 hover:text-orange-400 hover:cursor-pointer hidden sm:block`}>
                             {readMore ? 'Show less' : 'Read more'}
                         </span>
 
@@ -105,58 +125,55 @@ async function HomeComponent() {
                                 <ChevronRightIcon className={`ml-2`} height={18} width={18}/>
                             </Button>
                         </Link>
+                        <Divider className={"mt-6 mb-8"}/>
+                        <div className={"flex flex-col items-start"}>
+                            <Link className={"px-0 py-1 text-neutral-500 text-md button-hover flex items-center"}
+                                  href={"/?scrollTo=writing"}>
+                                <ChevronRightIcon className={`mr-2`} height={18} width={18}/>
+                                <span className={`text-md md:text-lg font pr-4 text-hover-l`}>Writing</span>
+                            </Link>
+                            <Link className={"px-0 py-1 text-neutral-500 text-md button-hover flex items-center"}
+                                  href={"/?scrollTo=work"}>
+                                <ChevronRightIcon className={`mr-2 icon-hover`} height={18} width={18}/>
+                                <span className={`text-md md:text-lg font pr-4 text-hover-l`}>Work</span>
+                            </Link>
+                            <Link className={"px-0 py-1 text-neutral-500 text-md button-hover flex items-center"}
+                                  href={"/?scrollTo=projects"}>
+                                <ChevronRightIcon className={`mr-2`} height={18} width={18}/>
+                                <span className={`text-md md:text-lg font pr-4 text-hover-l`}>Projects</span>
+                            </Link>
+                            <Link className={"px-0 py-1 text-neutral-500 text-md button-hover flex items-center"}
+                                  href={"/?scrollTo=contact"}>
+                                <ChevronRightIcon className={`mr-2`} height={18} width={18}/>
+                                <span className={`text-md md:text-lg font pr-4 text-hover-l`}>Contact</span>
+                            </Link>
+                        </div>
                     </div>
-
-                    <Divider className={"mt-1 mb-8"}/>
-
-                    <div className={"flex flex-col items-start"}>
-                        <Link className={"px-0 py-1 text-neutral-500 text-md button-hover flex items-center"}
-                              href={"/?scrollTo=writing"}>
-                            <ChevronRightIcon className={`mr-2`} height={18} width={18}/>
-                            <span className={`text-md md:text-lg font pr-4 text-hover-l`}>Writing</span>
-                        </Link>
-                        <Link className={"px-0 py-1 text-neutral-500 text-md button-hover flex items-center"}
-                              href={"/?scrollTo=work"}>
-                            <ChevronRightIcon className={`mr-2 icon-hover`} height={18} width={18}/>
-                            <span className={`text-md md:text-lg font pr-4 text-hover-l`}>Work</span>
-                        </Link>
-                        <Link className={"px-0 py-1 text-neutral-500 text-md button-hover flex items-center"}
-                              href={"/?scrollTo=projects"}>
-                            <ChevronRightIcon className={`mr-2`} height={18} width={18}/>
-                            <span className={`text-md md:text-lg font pr-4 text-hover-l`}>Projects</span>
-                        </Link>
-                        <Link className={"px-0 py-1 text-neutral-500 text-md button-hover flex items-center"}
-                              href={"/?scrollTo=contact"}>
-                            <ChevronRightIcon className={`mr-2`} height={18} width={18}/>
-                            <span className={`text-md md:text-lg font pr-4 text-hover-l`}>Contact</span>
-                        </Link>
-                    </div>
+                    <div className={"h-24"}/>
                 </div>
             </section>
 
-            <section id="writing" className={"w-full h-full flex justify-center snap-always snap-start"}>
+            <section id="writing" className={"w-full h-full flex justify-center snap-always snap-center"}>
                 <div
                     className={"w-11/12 lg:w-9/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
-                    <H1 className={"decoration-orange-400 underline underline-offset-4"}>
-                        Writing
-                    </H1>
-                    <LatestPost frontmatter={latest}/>
+                    <Link href={"/writing"}>
+                        <H1 className={"hover:text-orange-400"}>
+                            Writing
+                        </H1>
+                    </Link>
+                    <p className={"mb-4 text-neutral-400 font-light"}>
+                        You can find all my writing {``}
+                        <Link
+                            href={"/writing"}
+                            className={"underline text-orange-400"}>here.
+                        </Link>
+                    </p>
+
+                    {!loading && <LatestPost frontmatter={latest}/>}
                     <Divider className={"mt-1 mb-8"}/>
 
                     <ul className={"ml-0.5"}>
-                        {posts.map(p => (
-                            <li key={p.id}
-                                className={"text-neutral-500 mb-1 md:mb-2 flex justify-start content-center"}>
-                                <div className={"w-12 mr-2 hidden md:block"}>
-                                    <span className={"text-neutral-400"}>{p.created}</span>
-                                </div>
-                                <Dot className={"mr-2 md:hidden"}/>
-                                <Link href={`/w/${p.slug}`}
-                                      className={" hover:text-orange-500"}>
-                                    {p.title}
-                                </Link>
-                            </li>
-                        ))}
+                        <PostList posts={allPosts}/>
                     </ul>
                 </div>
             </section>
@@ -164,7 +181,7 @@ async function HomeComponent() {
             <section id="work" className={"w-full h-full flex justify-center snap-always snap-start"}>
                 <div
                     className={"w-11/12 lg:w-9/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
-                    <H1 className={"decoration-orange-400 underline underline-offset-4"}>
+                    <H1 className={""}>
                         Work
                     </H1>
 
@@ -201,13 +218,13 @@ async function HomeComponent() {
             <section id="projects" className={"w-full h-full flex justify-center snap-always snap-start"}>
                 <div
                     className={"w-11/12 lg:w-9/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
-                    <H1 className={"decoration-orange-400 underline underline-offset-4"}>
+                    <H1 className={"mb-8"}>
                         Projects
                     </H1>
 
                     {projects.map(p => (
                         <Link key={p.title} href={p.url}
-                              className={"w-full flex justify-between content-center items-center mb-3 md:mb-5"}>
+                              className={"w-full flex justify-between content-center items-center"}>
                             <div className={"w-full"}>
                                 <h4 className={"text-md md:text-lg font-medium text-neutral-800 mb-1"}>
                                     {p.title}
@@ -215,10 +232,9 @@ async function HomeComponent() {
                                 <p>
                                     {p.description}
                                 </p>
-                                <div className={"w-full h-[0.5px] bg-neutral-400 mt-3 md:mt-6 rounded"}/>
-                                <Divider className={"mt-3 md:mt-6 mb-8"}/>
+                                <Divider className={"mb-3 mt-3 md:mb-6 md:mt-6"}/>
                             </div>
-                            <div className={"min-w-8 min-h-8 md:ml-4 mr-8 ml-8"}>
+                            <div className={"min-w-8 min-h-8 md:ml-4 ml-2"}>
                                 <ChevronRightIcon className={""} height={28} width={28}/>
                             </div>
                         </Link>
@@ -231,18 +247,13 @@ async function HomeComponent() {
                 <div
                     className={"w-11/12 lg:w-9/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
                     <div className={"flex flex-col justify-center items-start"}>
-                        <H1 className={"decoration-orange-400 underline underline-offset-4"}>
+                        <H1 className={""}>
                             Contact
                         </H1>
                         <p className={"mb-5 text-md md:text-lg"}>
-                            Thanks for visiting! You can check my socials below, or go back to the
-                            top {searchParams.get('scrollTo') === 'home' ?
-                            (
-                                <Link href={"/?scrollTo=root"} className={"text-orange-400 hover:underline"}>here</Link>
-                            ) : (
-                                <Link href={"/?scrollTo=home"} className={"text-orange-400 hover:underline"}>here</Link>
-                            )
-                        }.
+                            Thanks for visiting! You can check my socials below, or go back to the {' '}
+                            <Link href={"https://marcelo.app"} replace
+                                  className={"underline text-orange-400"}>top</Link>.
                         </p>
                         <ul className={"mb-5"}>
                             {socials.map(s => (

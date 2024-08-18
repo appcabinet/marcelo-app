@@ -3,7 +3,8 @@ import React from "react";
 import H3 from "@/components/custom/core/H3";
 
 const LatestPost = ({ frontmatter }) => {
-    const created = new Date(frontmatter.created).toLocaleDateString();
+    // const created = new Date(frontmatter.created).toLocaleDateString();
+    console.log('frontmatter:', frontmatter);
 
     return (
         <>
@@ -13,7 +14,7 @@ const LatestPost = ({ frontmatter }) => {
                     {frontmatter.title}
                 </h4>
                 <p className={"text-sm md:text-[16px] mb-3 text-neutral-400"}>
-                    {created} · {frontmatter.duration}
+                    {frontmatter.created} · {frontmatter.duration}
                 </p>
                 {frontmatter?.summary && (
                     <p className={"text-md md:text-[16px] text-neutral-600"}>

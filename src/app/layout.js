@@ -3,12 +3,8 @@ import { DM_Sans } from "next/font/google";
 import { DM_Serif_Text } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import Head from "next/head";
-import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] });
 const dmSans = DM_Sans({ subsets: ["latin"] });
-const dmSerifText = DM_Serif_Text({ subsets: ["latin"], weight: ['400'] });
 
 export const metadata = {
     title: "marcelo.app",

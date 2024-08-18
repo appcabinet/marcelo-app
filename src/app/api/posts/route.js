@@ -1,7 +1,7 @@
 import { getAllPosts } from "@/lib/mdxUtils";
 import { NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET(request) {
     const posts = await getAllPosts();
 
     if (posts) {
@@ -9,5 +9,4 @@ export async function GET() {
     } else {
         return NextResponse.json({ error: 'Cannot retrieve posts' }, { status: 404 });
     }
-
 }
