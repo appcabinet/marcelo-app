@@ -1,30 +1,38 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import Link from "next/link";
 import { keygen } from "@/lib/utils";
-import { useToast } from "@/components/ui/use-toast";
 import EmailSignUp from "@/components/actions/EmailSignUp";
 
 import { DM_Serif_Text } from "next/font/google";
 import { Button } from "@/components/ui/button";
-import { Dot, Ellipsis, Loader2 } from "lucide-react";
+import { Dot, Loader2 } from "lucide-react";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
-
-import { articles } from "@/app/data/articles";
 import { work } from "@/app/data/work";
 import { socials } from "@/app/data/socials";
 import { projects } from "@/app/data/projects";
-import { Suspense, useEffect, useRef, useState } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
+import H1 from "@/components/custom/core/H1";
+import Divider from "@/components/custom/core/Divider";
+import LatestPost from "@/components/custom/latest-post";
+import H3 from "@/components/custom/core/H3";
 
 const titleFont = DM_Serif_Text({ subsets: ["latin"], weight: ['400'] });
 
-function HomeComponent() {
+async function getPosts() {
+    const response = await fetch('/api/posts');
+    if (!response.ok) {
+        throw new Error('Failed to fetch posts');
+    }
+    return await response.json();
+}
+
+async function HomeComponent() {
     const router = useRouter();
-    const firstArticle = articles[0];
-    let allArticles = articles.slice(1);
+    const posts = await getPosts();
+    const latest = posts[0];
+    let allPosts = posts.slice(1);
 
     const searchParams = useSearchParams();
     const [readMore, setReadMore] = useState(false);
@@ -62,9 +70,9 @@ function HomeComponent() {
                         <h1 className={`text-[40px] md:text-5xl leading-10 mb-1 font-medium ${titleFont.className}`}>
                             Marcelo Mantilla
                         </h1>
-                        <h3 className={`text-lg mb-4 text-neutral-400 font-light`}>
+                        <H3 className={"mb-4"}>
                             Software Engineer
-                        </h3>
+                        </H3>
                         <p className={`text-md mb-2 font-medium`}>
                             Pursuing competence, engineering backends, and re-thinking reading interfaces. {' '}
                         </p>
@@ -99,7 +107,7 @@ function HomeComponent() {
                         </Link>
                     </div>
 
-                    <div className={"w-full h-[0.5px] bg-neutral-400 mt-1 mb-8 rounded"}/>
+                    <Divider className={"mt-1 mb-8"}/>
 
                     <div className={"flex flex-col items-start"}>
                         <Link className={"px-0 py-1 text-neutral-500 text-md button-hover flex items-center"}
@@ -129,40 +137,24 @@ function HomeComponent() {
             <section id="writing" className={"w-full h-full flex justify-center snap-always snap-start"}>
                 <div
                     className={"w-11/12 lg:w-9/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
-                    <h1 className={`text-[40px] md:text-5xl leading-10 -ml-1 mb-5 font-medium ${titleFont.className}`}>
+                    <H1 className={"decoration-orange-400 underline underline-offset-4"}>
                         Writing
-                    </h1>
-
-                    <h3 className={"text-lg mb-3 text-neutral-400 font-light"}>Latest</h3>
-
-                    <Link href={firstArticle.url}
-                          className={"w-full flex flex-col items-start mb-5 rounded-lg"}>
-                        <h4 className={"text-lg font-medium text-neutral-800 leading-6 mb-1"}>
-                            {firstArticle.title}
-                        </h4>
-                        <p className={"text-sm md:text-[16px] mb-3"}>
-                            {firstArticle.created_at} · {firstArticle.read_time}
-                        </p>
-                        <p className={"text-md md:text-[16px]"}>
-                            {firstArticle.summary}
-                        </p>
-                    </Link>
-
-                    <div className={"w-full h-[0.5px] bg-neutral-400 mt-1 mb-8 rounded"}/>
+                    </H1>
+                    <LatestPost frontmatter={latest}/>
+                    <Divider className={"mt-1 mb-8"}/>
 
                     <ul className={"ml-0.5"}>
-                        {allArticles.map(a => (
-                            <li key={a.id}
+                        {posts.map(p => (
+                            <li key={p.id}
                                 className={"text-neutral-500 mb-1 md:mb-2 flex justify-start content-center"}>
                                 <div className={"w-12 mr-2 hidden md:block"}>
-                                    <span className={"text-neutral-400"}>{a.read_time}</span>
+                                    <span className={"text-neutral-400"}>{p.created}</span>
                                 </div>
                                 <Dot className={"mr-2 md:hidden"}/>
-                                <Link href={`/w/${a.url_header}`}
+                                <Link href={`/w/${p.slug}`}
                                       className={" hover:text-orange-500"}>
-                                    {a.title}
+                                    {p.title}
                                 </Link>
-
                             </li>
                         ))}
                     </ul>
@@ -172,9 +164,9 @@ function HomeComponent() {
             <section id="work" className={"w-full h-full flex justify-center snap-always snap-start"}>
                 <div
                     className={"w-11/12 lg:w-9/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
-                    <h1 className={`text-[40px] md:text-5xl leading-10 -ml-1 mb-4 font-medium ${titleFont.className}`}>
+                    <H1 className={"decoration-orange-400 underline underline-offset-4"}>
                         Work
-                    </h1>
+                    </H1>
 
                     <p className={"mb-4 text-neutral-400 font-light"}>
                         You can find my full CV {``}
@@ -199,8 +191,7 @@ function HomeComponent() {
                                         {w.description}
                                     </p>
                                 </div>
-                                <div
-                                    className={`w-full h-[0.5px] bg-neutral-400 mt-0 mb-4 rounded ${hidden} sm:block`}/>
+                                <Divider className={`mb-4 ${hidden} sm:block`}/>
                             </React.Fragment>
                         );
                     })}
@@ -210,9 +201,9 @@ function HomeComponent() {
             <section id="projects" className={"w-full h-full flex justify-center snap-always snap-start"}>
                 <div
                     className={"w-11/12 lg:w-9/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
-                    <h1 className={`text-[40px] md:text-5xl leading-10 mb-10 font-medium ${titleFont.className}`}>
+                    <H1 className={"decoration-orange-400 underline underline-offset-4"}>
                         Projects
-                    </h1>
+                    </H1>
 
                     {projects.map(p => (
                         <Link key={p.title} href={p.url}
@@ -225,6 +216,7 @@ function HomeComponent() {
                                     {p.description}
                                 </p>
                                 <div className={"w-full h-[0.5px] bg-neutral-400 mt-3 md:mt-6 rounded"}/>
+                                <Divider className={"mt-3 md:mt-6 mb-8"}/>
                             </div>
                             <div className={"min-w-8 min-h-8 md:ml-4 mr-8 ml-8"}>
                                 <ChevronRightIcon className={""} height={28} width={28}/>
@@ -239,9 +231,9 @@ function HomeComponent() {
                 <div
                     className={"w-11/12 lg:w-9/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
                     <div className={"flex flex-col justify-center items-start"}>
-                        <h1 className={`text-[40px] md:text-5xl leading-10 -ml-1 mb-5 font-medium ${titleFont.className}`}>
+                        <H1 className={"decoration-orange-400 underline underline-offset-4"}>
                             Contact
-                        </h1>
+                        </H1>
                         <p className={"mb-5 text-md md:text-lg"}>
                             Thanks for visiting! You can check my socials below, or go back to the
                             top {searchParams.get('scrollTo') === 'home' ?

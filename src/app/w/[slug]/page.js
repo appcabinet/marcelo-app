@@ -25,7 +25,6 @@ export async function generateStaticParams() {
     });
 }
 
-
 export default async function Page({ params }) {
     const { slug } = params;
     const { content, frontmatter } = await getPost(slug);
