@@ -3,7 +3,7 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import Link from "next/link";
 import { keygen } from "@/lib/utils";
-import EmailSignUp from "@/components/actions/EmailSignUp";
+import EmailSignUp from "@/components/custom/EmailSignUp";
 
 import { DM_Serif_Text } from "next/font/google";
 import { Button } from "@/components/ui/button";
@@ -97,11 +97,11 @@ async function HomeComponent() {
                             {readMore ? 'Show less' : 'Read more'}
                         </span>
 
-                        <Link href={"https://rewrite-v2.vercel.app/"}>
+                        <Link href={"/w/god-capitalism"}>
                             <Button
                                 className={"pr-3 pl-4 py-0 mt-4 max-w-64 text-white text-md bg-orange-400 hover:bg-orange-500 button-hover"}
                                 variant={""}>
-                                <span className={`text-md font-normal py-0 text-hover-l`}>Rethinking reading</span>
+                                <span className={`text-md font-normal py-0 text-hover-l`}>Read latest</span>
                                 <ChevronRightIcon className={`ml-2`} height={18} width={18}/>
                             </Button>
                         </Link>

@@ -1,6 +1,6 @@
 import H3 from "@/components/custom/core/H3";
 import Link from "next/link";
-import EmailSignUp from "@/components/actions/EmailSignUp";
+import EmailSignUp from "@/components/custom/EmailSignUp";
 import AppIcon from "@/components/custom/core/AppIcon";
 
 export default function Contact() {
