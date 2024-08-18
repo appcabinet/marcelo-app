@@ -49,7 +49,7 @@ const EmailSignUp = () => {
                         type={"email"}
                         name={"user_email"}
                         placeholder={"Email"}
-                        className={"mr-2 w-[280px]"}
+                        className={"mr-2 w-[280px] text-neutral-800"}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />

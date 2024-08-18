@@ -35,11 +35,11 @@ export default async function Page({ params }) {
             <nav className={"h-24 flex justify-between items-center content-center mb-4"}>
                 <Link href={"/writing"} className={"flex justify-start items-center group hover:text-orange-400"}>
                     <span
-                        className={"text-lg text-neutral-600 mt-[0.5px] font-light group-hover:underline"}>Writing</span>
+                        className={"text-lg text-neutral-500 mt-[0.5px] font-light group-hover:underline"}>Writing</span>
                 </Link>
                 <Link href={"/"} className={"flex justify-start items-center"}>
                     <span
-                        className={"text-lg text-neutral-600 mt-[0.5px] font-light hover:underline"}>
+                        className={"text-lg text-neutral-500 mt-[0.5px] font-light hover:underline"}>
                         marcelo.app
                     </span>
                 </Link>

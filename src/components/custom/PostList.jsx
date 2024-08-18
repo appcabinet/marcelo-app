@@ -13,7 +13,7 @@ export default function PostList({ posts }) {
             <ul className={"w-full ml-0.5"}>
                 {posts.map(p => (
                     <li key={p.id}
-                        className={"w-full text-neutral-500 mb-1 md:mb-2 flex justify-start content-center"}>
+                        className={"w-full text-neutral-500 mb-1 md:mb-1 flex justify-start content-center"}>
                         <div className={"w-[125px] mr-2 hidden md:block"}>
                             <span className={`text-neutral-400 font-light ${dmMono.className}`}>{p.created}</span>
                         </div>
