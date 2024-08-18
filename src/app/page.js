@@ -15,7 +15,7 @@ import { projects } from "@/app/data/home/projects";
 import { useRouter, useSearchParams } from "next/navigation";
 import H1 from "@/components/custom/core/H1";
 import Divider from "@/components/custom/core/Divider";
-import LatestPost from "@/components/custom/latest-post";
+import LatestPost from "@/components/custom/LatestPost";
 import H3 from "@/components/custom/core/H3";
 
 const titleFont = DM_Serif_Text({ subsets: ["latin"], weight: ['400'] });

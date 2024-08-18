@@ -1,7 +1,7 @@
-const MarceloAppIcon = ({ className }) => {
+const AppIcon = ({ className }) => {
     return (
         <img src={"/de3-icon.png"} alt={"Marcelo"} className={`w-10 h-10 rounded-md ${className}`}/>
     );
 };
 
-export default MarceloAppIcon;
+export default AppIcon;

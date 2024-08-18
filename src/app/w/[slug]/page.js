@@ -6,9 +6,9 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { DM_Sans, DM_Serif_Text } from "next/font/google";
 
 import components from "./components";
-import MarceloAppIcon from "@/components/custom/icon";
+import AppIcon from "@/components/custom/core/AppIcon";
 import { ChevronLeftIcon } from "@radix-ui/react-icons";
-import AppSection from "@/components/custom/section";
+import AppSection from "@/components/custom/core/AppSection";
 
 const dmSerif = DM_Serif_Text({ subsets: ["latin"], weight: ["400"] });
 
@@ -39,7 +39,7 @@ export default async function Page({ params }) {
                         className={"text-lg text-neutral-400 mt-[0.5px] font-light group-hover:underline"}>Writing</span>
                 </Link>
                 <Link href={"/"}>
-                    <MarceloAppIcon className={"mr-2"}/>
+                    <AppIcon className={"mr-2"}/>
                 </Link>
             </nav>
             <div className={"mb-6"}>

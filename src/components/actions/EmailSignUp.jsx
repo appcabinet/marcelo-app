@@ -41,13 +41,13 @@ const EmailSignUp = () => {
     };
 
     return (
-        <div className={"mt-8 w-full flex justify-start items-center content-center"}>
+        <div className={"mt-8 mb-8 w-full flex justify-start items-center content-center"}>
             <form ref={form} onSubmit={sendEmail} className={"flex w-full"}>
                 <Input
                     type={"email"}
                     name={"user_email"}
                     placeholder={"Email"}
-                    className={"mr-2"}
+                    className={"mr-2 w-[280px]"}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
