@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input.jsx";
 import { Button } from "@/components/ui/button.jsx";
 import { useToast } from "@/components/ui/use-toast";
 import { Loader } from "lucide-react";
+import AppIcon from "@/components/custom/core/AppIcon";
 
 const EmailSignUp = () => {
     const form = useRef();
@@ -41,25 +42,28 @@ const EmailSignUp = () => {
     };
 
     return (
-        <div className={"mt-8 mb-8 w-full flex justify-start items-center content-center"}>
-            <form ref={form} onSubmit={sendEmail} className={"flex w-full"}>
-                <Input
-                    type={"email"}
-                    name={"user_email"}
-                    placeholder={"Email"}
-                    className={"mr-2 w-[280px]"}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <Button
-                    className=""
-                    type="submit"
-                    onClick={() => setLoading(true)}
-                >
-                    {loading ? <Loader size={20} className="animate-spin"/> : <>👍</>}
-                </Button>
-            </form>
-        </div>
+        <>
+            <div className={`mt-8 mb-12 w-full flex justify-start items-center content-center`}>
+                <form ref={form} onSubmit={sendEmail} className={"flex w-full"}>
+                    <Input
+                        type={"email"}
+                        name={"user_email"}
+                        placeholder={"Email"}
+                        className={"mr-2 w-[280px]"}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <Button
+                        className=""
+                        type="submit"
+                        onClick={() => setLoading(true)}
+                    >
+                        {loading ? <Loader size={20} className="animate-spin"/> : <>👍</>}
+                    </Button>
+                </form>
+            </div>
+            <AppIcon/>
+        </>
     );
 };
 

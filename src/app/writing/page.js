@@ -40,6 +40,7 @@ export default async function Page() {
             <PostList posts={posts}/>
             <Divider className={"mt-12 mb-10 bg-neutral-300"}/>
             <Contact/>
+            <div className={"w-full h-32"}/>
         </AppSection>
     );
 }

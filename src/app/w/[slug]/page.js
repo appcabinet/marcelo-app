@@ -9,6 +9,9 @@ import components from "./components";
 import AppIcon from "@/components/custom/core/AppIcon";
 import { ChevronLeftIcon } from "@radix-ui/react-icons";
 import AppSection from "@/components/custom/core/AppSection";
+import Contact from "@/components/custom/Contact";
+import Divider from "@/components/custom/core/Divider";
+import React from "react";
 
 const dmSerif = DM_Serif_Text({ subsets: ["latin"], weight: ["400"] });
 
@@ -31,13 +34,14 @@ export default async function Page({ params }) {
         <AppSection>
             <nav className={"h-24 flex justify-between items-center content-center mb-4"}>
                 <Link href={"/writing"} className={"flex justify-start items-center group hover:text-orange-400"}>
-                    <ChevronLeftIcon className={"mr-1 text-neutral-400"} height={100}
-                                     width={23}/>
                     <span
-                        className={"text-lg text-neutral-400 mt-[0.5px] font-light group-hover:underline"}>Writing</span>
+                        className={"text-lg text-neutral-600 mt-[0.5px] font-light group-hover:underline"}>Writing</span>
                 </Link>
-                <Link href={"/"}>
-                    <AppIcon className={"mr-2"}/>
+                <Link href={"/"} className={"flex justify-start items-center"}>
+                    <span
+                        className={"text-lg text-neutral-600 mt-[0.5px] font-light hover:underline"}>
+                        marcelo.app
+                    </span>
                 </Link>
             </nav>
             <div className={"mb-6"}>
@@ -45,10 +49,13 @@ export default async function Page({ params }) {
                 <h6 className={'text-lg md:text-lg text-neutral-500'}>
                     <span>{frontmatter.created}</span>
                     &nbsp;·&nbsp;
-                    <span>{frontmatter.duration}</span>
+                    <span>{frontmatter.duration}</span> minute read
                 </h6>
             </div>
             <MDXRemote source={content} components={components}/>
+            <Divider className={"mt-16 mb-12 "}/>
+            <Contact/>
+            <div className={"h-36"}/>
         </AppSection>
     );
 }

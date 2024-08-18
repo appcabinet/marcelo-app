@@ -22,7 +22,7 @@ export default function Contact() {
                 <Link className={"underline hover:text-orange-400"} href={"mailto:marcelo@appcabinet.com"}>
                     email
                 </Link>. {" "}
-                Subscribe to my newsletter below for updates on projects and new articles!
+                Subscribe to my newsletter below to receive my latest posts.
             </p>
             <EmailSignUp/>
         </div>
