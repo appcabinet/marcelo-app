@@ -98,22 +98,26 @@ function HomeComponent() {
                         </p>
                         {readMore && (
                             <p className={`text-md mt-2 mb-2 md:w-6/12 leading-6`}>
-                                I studied sound engineering in Berlin, Germany before pivoting to software.
-                                I composed music for short films and engineered music for various clients at our
-                                recording studio in Berlin.
+                                I studied sound engineering in Berlin, Germany before pivoting to software. My entire
+                                music portfolio is available {``}
+                                <Link
+                                    href={"https://www.marcelomantilla.com"}
+                                    className={"underline text-orange-400"}>here
+                                </Link>.
                                 <br/>
                                 <br/>
-                                I've since pivoted to software after a failed business and a coding bootcamp taught
-                                me
-                                how to code. I'm now a passionate developer with a love of building applications.
-                                Currently, I'm rethinking how we read on the web, freelancing, and cultivating my
-                                skills
-                                as an engineer.
+                                I've since transitioned to software engineering after a failed business and a coding
+                                bootcamp taught me how to code.
+                                <br/>
+                                <br/>
+                                Currently, I'm rethinking how we read on the web,
+                                freelancing, and cultivating
+                                my skills as an engineer.
                             </p>
                         )}
                         <span
                             onClick={() => setReadMore(!readMore)}
-                            className={`mb-2 text-md font-light text-neutral-400 hover:text-orange-400 hover:cursor-pointer hidden sm:block`}>
+                            className={`text-md font-light text-neutral-400 hover:text-orange-400 hover:cursor-pointer hidden sm:block`}>
                             {readMore ? 'Show less' : 'Read more'}
                         </span>
 
