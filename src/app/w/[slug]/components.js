@@ -11,6 +11,7 @@ const components = {
     h3: (props) => <h3 {...props} className="text-xl font-medium mb-1.5 mt-5 text-neutral-600"/>,
     p: (props) => <p {...props} className={`text-lg mb-5 text-neutral-700`}/>,
     a: (props) => <a {...props} className="text-orange-500 hover:underline"/>,
+    ul: (props) => <ul {...props} className="list-disc pl-5 text-lg mb-5 text-neutral-700"/>,
 };
 
 export default components;
