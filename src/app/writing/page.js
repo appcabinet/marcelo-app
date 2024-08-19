@@ -22,7 +22,7 @@ export default async function Page() {
 
     return (
         <AppSection>
-            <nav className={"h-24 flex justify-between items-center content-center mb-4"}>
+            <nav className={"h-16 md:h-24 flex justify-between items-center content-center"}>
                 <Link href={"/writing"} className={"flex justify-start items-center group hover:text-orange-400"}>
                 </Link>
                 <Link href={"/"} className={"flex justify-start items-center group hover:text-orange-400"}>
@@ -36,7 +36,7 @@ export default async function Page() {
                 Writing
             </H1>
             <LatestPost frontmatter={latest}/>
-            <Divider className={"mt-10 mb-10 bg-neutral-300"}/>
+            <Divider className={"mt-8 mb-10 bg-neutral-300"}/>
             <PostList posts={posts}/>
             <Divider className={"mt-12 mb-10 bg-neutral-300"}/>
             <Contact/>
