@@ -165,7 +165,7 @@ function HomeComponent() {
                             Writing
                         </H1>
                     </Link>
-                    <p className={"mb-4 text-neutral-400 font-light"}>
+                    <p className={"mb-4 md:text-lg text-neutral-400 font-light"}>
                         You can find all my writing {``}
                         <Link
                             href={"/writing"}
@@ -174,7 +174,7 @@ function HomeComponent() {
                     </p>
 
                     {!loading && <LatestPost frontmatter={latest}/>}
-                    <Divider className={"mt-1 mb-8"}/>
+                    <Divider className={"mt-2 mb-5 md:mt-4 md:mb-8"}/>
 
                     <ul className={"ml-0.5"}>
                         <PostList posts={allPosts}/>
@@ -189,10 +189,10 @@ function HomeComponent() {
                         Work
                     </H1>
 
-                    <p className={"mb-4 text-neutral-400 font-light"}>
+                    <p className={"mb-4 md:text-lg text-neutral-400 font-light"}>
                         You can find my full CV {``}
                         <Link
-                            href={"https://www.notion.so/mindofmarcelo/Marcelo-Mantilla-7f5c1c7838f543c7889ad8303b9a2a22?pvs=4"}
+                            href={"https://mindofmarcelo.notion.site/Marcelo-Mantilla-eb508cc3db6646d9a55a61822cf344d1?pvs=4"}
                             className={"underline text-orange-400"}>here.
                         </Link>
                     </p>
@@ -201,18 +201,18 @@ function HomeComponent() {
                         let hidden = index > 2 ? 'hidden' : '';
                         return (
                             <React.Fragment key={w.role}>
-                                <div className={`mb-5 ${hidden} sm:block`}>
-                                    <h4 className={"text-lg font-medium text-neutral-800 mb-0"}>
+                                <div className={`mb-3 md:mb-5 ${hidden} sm:block`}>
+                                    <h4 className={"text-md md:text-lg font-medium text-neutral-800 mb-0"}>
                                         {w.role}
                                     </h4>
-                                    <p className={"mb-2 text-neutral-500"}>
+                                    <p className={"text-[15px] md:text-md mb-2 text-neutral-500"}>
                                         {w.company} · {w.from}
                                     </p>
-                                    <p>
+                                    <p className={"text-[15px] md:text-md"}>
                                         {w.description}
                                     </p>
                                 </div>
-                                <Divider className={`mb-4 ${hidden} sm:block`}/>
+                                <Divider className={`mb-2 md:mb-4 ${hidden} sm:block`}/>
                             </React.Fragment>
                         );
                     })}
@@ -233,7 +233,7 @@ function HomeComponent() {
                                 <h4 className={"text-md md:text-lg font-medium text-neutral-800 mb-1"}>
                                     {p.title}
                                 </h4>
-                                <p>
+                                <p className={"text-[15px] md:text-md"}>
                                     {p.description}
                                 </p>
                                 <Divider className={"mb-3 mt-3 md:mb-6 md:mt-6"}/>

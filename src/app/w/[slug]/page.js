@@ -49,7 +49,7 @@ export default async function Page({ params }) {
                 <h6 className={'text-lg md:text-lg text-neutral-500'}>
                     <span>{frontmatter.created}</span>
                     &nbsp;·&nbsp;
-                    <span>{frontmatter.duration}</span> minute read
+                    <span>{frontmatter.duration}</span>
                 </h6>
             </div>
             <MDXRemote source={content} components={components}/>

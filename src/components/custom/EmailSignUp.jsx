@@ -43,13 +43,13 @@ const EmailSignUp = () => {
 
     return (
         <>
-            <div className={`mt-8 mb-12 w-full flex justify-start items-center content-center`}>
+            <div className={`mt-8 mb-12 w-full max-w-[380px] flex justify-start items-center content-center`}>
                 <form ref={form} onSubmit={sendEmail} className={"flex w-full"}>
                     <Input
                         type={"email"}
                         name={"user_email"}
                         placeholder={"Email"}
-                        className={"mr-2 w-[280px] text-neutral-800"}
+                        className={"mr-2 text-neutral-800"}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -58,7 +58,7 @@ const EmailSignUp = () => {
                         type="submit"
                         onClick={() => setLoading(true)}
                     >
-                        {loading ? <Loader size={20} className="animate-spin"/> : <>👍</>}
+                        {loading ? <Loader size={20} className="animate-spin"/> : <>Sign Up</>}
                     </Button>
                 </form>
             </div>

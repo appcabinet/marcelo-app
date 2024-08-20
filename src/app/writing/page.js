@@ -32,7 +32,7 @@ export default async function Page() {
                     </span>
                 </Link>
             </nav>
-            <H1 className={"mb-8"}>
+            <H1 className={"mb-8 md:mb-9"}>
                 Writing
             </H1>
             <LatestPost frontmatter={latest}/>
