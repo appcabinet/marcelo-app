@@ -15,7 +15,7 @@ const LatestPost = ({ frontmatter }) => {
                 </p>
 
                 {frontmatter?.summary && (
-                    <p className={"text-sm md:text-[16px] text-neutral-600"}>
+                    <p className={"text-md md:text-[16px] text-neutral-600"}>
                         {frontmatter.summary}
                     </p>
                 )}
