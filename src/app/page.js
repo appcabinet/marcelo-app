@@ -222,7 +222,7 @@ function HomeComponent() {
             <section id="projects" className={"w-full h-full flex justify-center snap-always snap-start"}>
                 <div
                     className={"w-11/12 lg:w-9/12 px-0 h-full text-neutral-600 flex flex-col justify-center items-start"}>
-                    <H1 className={"mb-8"}>
+                    <H1 className={"mb-6 md:mb-8"}>
                         Projects
                     </H1>
 
@@ -233,7 +233,7 @@ function HomeComponent() {
                                 <h4 className={"text-md md:text-lg font-medium text-neutral-800 mb-1"}>
                                     {p.title}
                                 </h4>
-                                <p className={"text-[15px] md:text-md"}>
+                                <p className={"text-[15px] md:text-[17px]"}>
                                     {p.description}
                                 </p>
                                 <Divider className={"mb-3 mt-3 md:mb-6 md:mt-6"}/>
