@@ -153,9 +153,10 @@ function HomeComponent() {
                             </Link>
                         </div>
                     </div>
-                    <div className={"h-24"}/>
+                    <div className={"h-48 md:h-24"}/>
                 </div>
             </section>
+
 
             <section id="writing" className={"w-full h-full flex justify-center snap-always snap-center"}>
                 <div
@@ -179,8 +180,10 @@ function HomeComponent() {
                     <ul className={"ml-0.5"}>
                         <PostList posts={allPosts}/>
                     </ul>
+                    <div className={"h-20 md:h-8"}/>
                 </div>
             </section>
+
 
             <section id="work" className={"w-full h-full flex justify-center snap-always snap-start"}>
                 <div
@@ -188,7 +191,6 @@ function HomeComponent() {
                     <H1 className={""}>
                         Work
                     </H1>
-
                     <p className={"mb-4 md:text-lg text-neutral-400 font-light"}>
                         You can find my full CV {``}
                         <Link
@@ -196,7 +198,6 @@ function HomeComponent() {
                             className={"underline text-orange-400"}>here.
                         </Link>
                     </p>
-
                     {work.map((w, index) => {
                         let hidden = index > 2 ? 'hidden' : '';
                         return (
@@ -216,8 +217,10 @@ function HomeComponent() {
                             </React.Fragment>
                         );
                     })}
+                    <div className={"h-20 md:h-8"}/>
                 </div>
             </section>
+
 
             <section id="projects" className={"w-full h-full flex justify-center snap-always snap-start"}>
                 <div
@@ -225,7 +228,6 @@ function HomeComponent() {
                     <H1 className={"mb-6 md:mb-8"}>
                         Projects
                     </H1>
-
                     {projects.map(p => (
                         <Link key={p.title} href={p.url}
                               className={"w-full flex justify-between content-center items-center"}>
@@ -244,8 +246,10 @@ function HomeComponent() {
                         </Link>
                     ))}
                     <br/>
+                    <div className={"h-20 md:h-8"}/>
                 </div>
             </section>
+
 
             <section id="contact" className={"w-full h-full flex justify-center snap-always snap-start"}>
                 <div
@@ -275,7 +279,7 @@ function HomeComponent() {
                         </p>
                         <EmailSignUp/>
                     </div>
-
+                    <div className={"h-20 md:h-8"}/>
                 </div>
             </section>
         </div>
