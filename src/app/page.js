@@ -101,7 +101,7 @@ function HomeComponent() {
                                 I studied sound engineering in Berlin, Germany before pivoting to software. My entire
                                 music portfolio is available {``}
                                 <Link
-                                    href={"https://www.marcelomantilla.com"}
+                                    href={"https://soundcloud.com/pondermars"}
                                     className={"underline text-orange-400"}>here
                                 </Link>.
                                 <br/>
