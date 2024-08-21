@@ -1,6 +1,7 @@
 import { DM_Serif_Text } from "next/font/google";
 import { Merriweather } from "next/font/google";
 import { Button } from "@/components/ui/button";
+import React from "react";
 
 const dmSerif = DM_Serif_Text({ subsets: ["latin"], weight: ["400"] });
 const alegreya = Merriweather({ subsets: ["latin"], weight: ["400"] });
@@ -12,6 +13,7 @@ const components = {
     p: (props) => <p {...props} className={`text-lg mb-5 text-neutral-700`}/>,
     a: (props) => <a {...props} className="text-orange-500 hover:underline"/>,
     ul: (props) => <ul {...props} className="list-disc pl-5 text-lg mb-5 text-neutral-700"/>,
+    hr: (props) => <div className={`w-full h-[0.5px] mb-5 bg-neutral-400 rounded`}/>,
 };
 
 export default components;

@@ -9,7 +9,9 @@ export async function getPost(slug) {
     const filePath = path.join(postsDirectory, `${slug}.mdx`);
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data: frontmatter, content } = matter(fileContents);
-    return { content, frontmatter };
+    const createdDate = frontmatter.created;
+    frontmatter.created = format(frontmatter.created, "yyyy-MM-dd");
+    return { content, frontmatter, createdDate };
 }
 
 export async function getAllPosts() {
@@ -21,23 +23,18 @@ export async function getAllPosts() {
         const fileContents = fs.readFileSync(filePath, 'utf8');
         const { data: frontmatter } = matter(fileContents);
 
-        const createdDate = parse(frontmatter.created, "yyyy-MM-dd", new Date());
+        const createdDate = frontmatter.created;
+        const formattedDate = format(new Date(createdDate), "yyyy-MM-dd");
 
         return {
             slug,
             createdDate,
             ...frontmatter,
+            created: formattedDate
         };
     });
 
     // Sort posts by date
-    posts.sort((a, b) => {
-        if (a.createdDate < b.createdDate) {
-            return 1;
-        } else {
-            return -1;
-        }
-    });
-
+    posts.sort((a, b) => b.createdDate - a.createdDate);
     return posts;
 }
