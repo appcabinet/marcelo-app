@@ -121,7 +121,7 @@ function HomeComponent() {
                             {readMore ? 'Show less' : 'Read more'}
                         </span>
 
-                        <Link href={"/w/god-capitalism"}>
+                        <Link href={`/w/${latest.slug}`}>
                             <Button
                                 className={"pr-3 pl-4 py-0 mt-4 max-w-64 text-white text-md bg-orange-400 hover:bg-orange-500 button-hover"}
                                 variant={""}>
