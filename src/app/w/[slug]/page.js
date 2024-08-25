@@ -52,7 +52,7 @@ export default async function Page({ params }) {
             </nav>
             <div className={"mb-6"}>
                 <h1 className={`mb-2 text-3xl md:text-4xl text-neutral-600 decoration-orange-400 underline underline-offset-4 ${dmSerif.className}`}>{frontmatter.title}</h1>
-                <h6 className={'text-md md:text-[18px] text-neutral-500'}>
+                <h6 className={'text-md md:text-[18px] text-neutral-500 font-light'}>
                     <span>{formattedDate}</span>
                     &nbsp;·&nbsp;
                     <span>{frontmatter.duration}</span>
