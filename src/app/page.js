@@ -18,6 +18,7 @@ import Divider from "@/components/custom/core/Divider";
 import LatestPost from "@/components/custom/LatestPost";
 import H3 from "@/components/custom/core/H3";
 import PostList from "@/components/custom/PostList";
+import Image from "next/image";
 
 const titleFont = DM_Serif_Text({ subsets: ["latin"], weight: ['400'] });
 
@@ -77,7 +78,6 @@ function HomeComponent() {
                 <div
                     className={"w-11/12 lg:w-9/12 px-0 h-full text-neutral-600 flex flex-col justify-between items-start"}>
                     <nav className={"w-full h-24 flex justify-between items-center content-center mb-4"}>
-                        <div/>
                         <Link href={"/"} className={"flex justify-start items-center group hover:text-orange-400"}>
                             <span
                                 className={"text-lg text-neutral-600 mt-[0.5px] font-light group-hover:text-orange-400 group-hover:underline"}>
@@ -87,6 +87,10 @@ function HomeComponent() {
                     </nav>
 
                     <div className={"mb-6 flex flex-col w-full"}>
+                        <div>
+                            <Image src={'/de3-icon.png'} alt={'DALL-E 3 Generated Image'} width={300} height={300}
+                             className={'rounded-lg mb-8 shadow-sm'}/>
+                        </div>
                         <h1 className={`text-[40px] md:text-5xl leading-10 mb-1 font-medium ${titleFont.className}`}>
                             Marcelo Mantilla
                         </h1>
@@ -94,7 +98,7 @@ function HomeComponent() {
                             Software Engineer
                         </H3>
                         <p className={`text-md mb-2 font-medium`}>
-                            Pursuing competence, engineering backends, and re-thinking reading interfaces. {' '}
+                            Pursuing competence, engineering backends, and building applications. {' '}
                         </p>
                         {readMore && (
                             <p className={`text-md mt-2 mb-2 md:w-6/12 leading-6`}>
@@ -107,12 +111,11 @@ function HomeComponent() {
                                 <br/>
                                 <br/>
                                 I've since transitioned to software engineering after a failed business and a coding
-                                bootcamp taught me how to code.
+                                bootcamp taught me how to code. At the moment I'm consulting, writing, and building {` `}
+                                <Link href={"https://openbook.so"} className={"underline text-orange-400"}>openbook.so</Link>.
                                 <br/>
                                 <br/>
-                                Currently, I'm rethinking how we read on the web,
-                                freelancing, and cultivating
-                                my skills as an engineer.
+                                If you think I'd be a good fit for your project, feel free to reach out 👋
                             </p>
                         )}
                         <span

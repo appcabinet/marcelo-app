@@ -1,6 +1,6 @@
 export const work = [
     {
-        role: "Freelance",
+        role: "Consultant",
         company: "Self-Employed",
         from: "May 2024 - Aug 2024",
         description: "Building fast AI-enabled go-to-market MVPs. For any inquiries you can reach me at marcelo[at]appcabinet[dot]com!"

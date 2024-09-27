@@ -1,13 +1,18 @@
 export const projects = [
     {
-        title: "Re-thinking Reading Interfaces",
-        description: "Crafting digital reading experiences from scratch. Version 4 out now 📕",
-        url: "https://rewrite-v2.vercel.app/"
+        title: "Building openbook.so 📕",
+        description: "Building a platform for the next generation of writers. NextJS, Framer, Supabase, & rich text editing.",
+        url: "https://openbook.so"
     },
     {
         title: "PLOX Interpreter",
         description: "Writing my own LOX language interpreter in Python.",
-        url: "/"
+        url: "https://github.com/appcabinet/plox-interpreter"
+    },
+    {
+        title: "Rebuilding git in Rust",
+        description: "Rebuilding git in Rust to learn more about systems programming and git.",
+        url: "https://github.com/appcabinet/git-as-rust"
     },
     {
         title: "Invicta E-Reader",
