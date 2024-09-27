@@ -29,6 +29,8 @@ function HomeComponent() {
     const searchParams = useSearchParams();
     const router = useRouter();
 
+    const mobileProjects = projects.filter(p => p.mobile);
+
     useEffect(() => {
         fetch('/api/posts')
             .then(res => res.json())
@@ -87,9 +89,12 @@ function HomeComponent() {
                     </nav>
 
                     <div className={"mb-6 flex flex-col w-full"}>
-                        <div>
-                            <Image src={'/de3-icon.png'} alt={'DALL-E 3 Generated Image'} width={300} height={300}
-                             className={'rounded-lg mb-8 shadow-sm'}/>
+                        <div className={"relative w-[220px] md:w-[220px] lg:w-[300px] aspect-square mb-6"}>
+                            <Image src={'/de3-icon.png'}
+                                   alt={'DALL-E 3 Generated Image'}
+                                   layout={'fill'}
+                                   className={'rounded-lg shadow-sm object-cover object-center'}
+                            />
                         </div>
                         <h1 className={`text-[40px] md:text-5xl leading-10 mb-1 font-medium ${titleFont.className}`}>
                             Marcelo Mantilla
@@ -98,10 +103,10 @@ function HomeComponent() {
                             Software Engineer
                         </H3>
                         <p className={`text-md mb-2 font-medium`}>
-                            Pursuing competence, engineering backends, and building applications. {' '}
+                            Pursuing competence, engineering backends, and crafting applications. {' '}
                         </p>
                         {readMore && (
-                            <p className={`text-md mt-2 mb-2 md:w-6/12 leading-6`}>
+                            <p className={`text-md mt-2 mb-2 md:w-7/12 leading-6`}>
                                 I studied sound engineering in Berlin, Germany before pivoting to software. My entire
                                 music portfolio is available {``}
                                 <Link
@@ -115,7 +120,7 @@ function HomeComponent() {
                                 <Link href={"https://openbook.so"} className={"underline text-orange-400"}>openbook.so</Link>.
                                 <br/>
                                 <br/>
-                                If you think I'd be a good fit for your project, feel free to reach out 👋
+                                If you think I'd be a good fit for your project, I'd love to hear from you!
                             </p>
                         )}
                         <span
@@ -231,23 +236,44 @@ function HomeComponent() {
                     <H1 className={"mb-6 md:mb-8"}>
                         Projects
                     </H1>
-                    {projects.map(p => (
-                        <Link key={p.title} href={p.url}
-                              className={"w-full flex justify-between content-center items-center"}>
-                            <div className={"w-full"}>
-                                <h4 className={"text-md md:text-lg font-medium text-neutral-800 mb-1"}>
-                                    {p.title}
-                                </h4>
-                                <p className={"text-[15px] md:text-[17px]"}>
-                                    {p.description}
-                                </p>
-                                <Divider className={"mb-3 mt-3 md:mb-6 md:mt-6"}/>
-                            </div>
-                            <div className={"min-w-8 min-h-8 md:ml-4 ml-2"}>
-                                <ChevronRightIcon className={""} height={28} width={28}/>
-                            </div>
-                        </Link>
-                    ))}
+                    <div className={"sm:hidden"}>
+                        {mobileProjects.map(p => (
+                            <Link key={p.title} href={p.url}
+                                  className={"w-full flex justify-between content-center items-center"}>
+                                <div className={"w-full"}>
+                                    <h4 className={"text-md md:text-lg font-medium text-neutral-800 mb-1"}>
+                                        {p.title}
+                                    </h4>
+                                    <p className={"text-[15px] md:text-[17px]"}>
+                                        {p.description}
+                                    </p>
+                                    <Divider className={"mb-3 mt-3 md:mb-6 md:mt-6"}/>
+                                </div>
+                                <div className={"min-w-8 min-h-8 md:ml-4 ml-2"}>
+                                    <ChevronRightIcon className={""} height={28} width={28}/>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                    <div className={"hidden sm:block"}>
+                        {projects.map(p => (
+                            <Link key={p.title} href={p.url}
+                                  className={"w-full flex justify-between content-center items-center"}>
+                                <div className={"w-full"}>
+                                    <h4 className={"text-md md:text-lg font-medium text-neutral-800 mb-1"}>
+                                        {p.title}
+                                    </h4>
+                                    <p className={"text-[15px] md:text-[17px]"}>
+                                        {p.description}
+                                    </p>
+                                    <Divider className={"mb-3 mt-3 md:mb-6 md:mt-6"}/>
+                                </div>
+                                <div className={"min-w-8 min-h-8 md:ml-4 ml-2"}>
+                                    <ChevronRightIcon className={""} height={28} width={28}/>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
                     <br/>
                     <div className={"h-20 md:h-8"}/>
                 </div>

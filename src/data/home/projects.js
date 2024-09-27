@@ -2,7 +2,8 @@ export const projects = [
     {
         title: "Building openbook.so 📕",
         description: "Building a platform for the next generation of writers. NextJS, Framer, Supabase, & rich text editing.",
-        url: "https://openbook.so"
+        url: "https://openbook.so",
+        mobile: true,
     },
     {
         title: "PLOX Interpreter",
@@ -12,12 +13,14 @@ export const projects = [
     {
         title: "Rebuilding git in Rust",
         description: "Rebuilding git in Rust to learn more about systems programming and git.",
-        url: "https://github.com/appcabinet/git-as-rust"
+        url: "https://github.com/appcabinet/git-as-rust",
+        mobile: true,
     },
     {
         title: "Invicta E-Reader",
         description: "Wrote my own E-Reader. EPUBs were parsed, stored in relational DB, and could be read from anywhere.",
-        url: "https://github.com/invicta-app/interpreter-api"
+        url: "https://github.com/invicta-app/interpreter-api",
+        mobile: true,
     },
     {
         title: "Notion Workflows",
@@ -27,6 +30,7 @@ export const projects = [
     {
         title: "Sound Engineering",
         description: "Film scoring, sound design, and creative music production.",
-        url: "https://soundcloud.com/pondermars"
+        url: "https://soundcloud.com/pondermars",
+        mobile: true,
     }
 ];
