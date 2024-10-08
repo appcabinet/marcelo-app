@@ -29,6 +29,11 @@ function HomeComponent() {
     const searchParams = useSearchParams();
     const router = useRouter();
 
+    const openbookRedirect = searchParams.get('redirect')
+
+    // Instagram Redirect
+    if (openbookRedirect === 'openbook') router.push('https://launchbook.unicornplatform.page/')
+
     const mobileProjects = projects.filter(p => p.mobile);
 
     useEffect(() => {
